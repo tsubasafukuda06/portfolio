@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="icon/icon.jpg" type="image/jpeg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TSUBASA fukuda</title>
+  <meta name="description" content="TSUBASA FUKUDA — Graphic designer and VJ creating graphic, generative, and interactive works.">
+
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tsubasa-d.jp/">
+  <meta property="og:title" content="TSUBASA fukuda">
+  <meta property="og:description" content="TSUBASA FUKUDA — Graphic designer and VJ creating graphic, generative, and interactive works.">
+  <meta property="og:image" content="https://tsubasa-d.jp/icon/icon.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@tsubasa_fukuda_">
+  <meta name="twitter:title" content="TSUBASA fukuda">
+  <meta name="twitter:description" content="TSUBASA FUKUDA — Graphic designer and VJ creating graphic, generative, and interactive works.">
+  <meta name="twitter:image" content="https://tsubasa-d.jp/icon/icon.jpg">
+
+  <link rel="preload" href="type/RoBodoni-Book.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="type/RoBodoni-BookSC.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="type/Codystar-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- イントロ -->
+  <div id="intro">
+    <video id="intro-video" src="icon/01.webm" autoplay muted playsinline></video>
+    <img id="intro-poster" src="icon/intro-poster.jpg" style="display:none; width:200px; height:200px; object-fit:contain;">
+  </div>
+
+  <!-- ヘッダー -->
+  <header>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <nav class="menu-nav" id="menu-nav">
+      <ul class="nav-links">
+        <li><a href="#" data-page="main" class="active">About</a></li>
+        <li><a href="#" data-page="work">Work</a></li>
+        <li><a href="#" data-page="play">Play</a></li>
+        <li><a href="#" data-page="contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- About ページ -->
+  <!-- アイコン動画（About固定） -->
+  <video id="icon-video" src="icon/03.webm" autoplay muted loop playsinline></video>
+
+  <div id="page-main" class="page active">
+    <section class="about-hero">
+      <div class="about-slideshow" id="about-slideshow">
+        <img class="about-slide active" src="media/hisomineLIVE/0328.webp" alt="">
+        <img class="about-slide" src="media/nepoVJ/thumbnail.webp" alt="">
+        <img class="about-slide" src="media/OOZE_logo/thumbnail.webp" alt="">
+        <img class="about-slide" src="media/dfd/thumbnail.webp" alt="">
+        <img class="about-slide" src="media/breathing-type/thumbnail.webp" alt="">
+        <canvas id="mosaic-canvas"></canvas>
+      </div>
+      <div class="about-text">
+        <p><span class="about-link" data-page="bio">TSUBASA FUKUDA</span></p>
+        <p>IS A DESIGNER</p>
+        <p>CREATING <span class="about-link" data-filter="graphic">GRAPHIC</span>,<span class="about-link" data-filter="generative">GENERATIVE</span>,</p>
+        <p>AND <span class="about-link" data-filter="interactive">INTERACTIVE</span> WORKS</p>
+      </div>
+    </section>
+
+    <!-- ピックアップ作品 -->
+    <section class="featured">
+      <a class="featured-item" href="works/ooze-hisominelive.html">
+        <div class="featured-image" style="background: url('media/hisomineLIVE/0328.webp') center/cover no-repeat;"></div>
+      </a>
+      <a class="featured-item" href="works/ooze-nepolive.html">
+        <div class="featured-image" style="background: url('media/nepoVJ/thumbnail.webp') center/cover no-repeat;"></div>
+      </a>
+      <a class="featured-item" href="works/ooze-logo.html">
+        <div class="featured-image" style="background: url('media/OOZE_logo/thumbnail.webp') center/contain no-repeat;"></div>
+      </a>
+      <a class="featured-item" href="works/design-for-design.html">
+        <div class="featured-image" style="background: url('media/dfd/thumbnail.webp') center/cover no-repeat;"></div>
+      </a>
+      <a class="featured-item" href="works/breathing-typography.html">
+        <div class="featured-image" style="background: url('media/breathing-type/thumbnail.webp') center/cover no-repeat;"></div>
+      </a>
+    </section>
+  </div>
+
+  <!-- WORK ページ -->
+  <div id="page-work" class="page">
+    <section class="works-section">
+      <div class="works-header">
+        <div class="works-title">WORK</div>
+      </div>
+
+      <div class="work-filters" id="work-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="graphic">Graphic</button>
+        <button class="filter-btn" data-filter="generative">Generative</button>
+        <button class="filter-btn" data-filter="interactive">Interactive</button>
+      </div>
+
+      <p class="coming-soon" id="coming-soon-work" style="display:none;">Coming Soon...</p>
+
+      <div class="work-grid">
+
+        <a class="work-item" href="works/ooze-hisominelive.html" data-category="generative">
+          <div class="work-thumb"><img src="media/hisomineLIVE/0328.webp" alt="OOZE - hisomineLIVE"></div>
+          <div class="work-item-info">
+            <p class="work-item-title">OOZE - hisomineLIVE</p>
+            <p class="work-item-meta">Generative</p>
+          </div>
+        </a>
+
+        <a class="work-item" href="works/ooze-nepolive.html" data-category="generative">
+          <div class="work-thumb"><img src="media/nepoVJ/thumbnail.webp" alt="OOZE - nepoLIVE"></div>
+          <div class="work-item-info">
+            <p class="work-item-title">OOZE - nepoLIVE</p>
+            <p class="work-item-meta">Generative</p>
+          </div>
+        </a>
+
+        <a class="work-item" href="works/ooze-logo.html" data-category="graphic">
+          <div class="work-thumb"><img src="media/OOZE_logo/thumbnail.webp" alt="OOZE"></div>
+          <div class="work-item-info">
+            <p class="work-item-title">OOZE</p>
+            <p class="work-item-meta">Graphic</p>
+          </div>
+        </a>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- PLAY ページ -->
+  <div id="page-play" class="page">
+    <section class="works-section">
+      <div class="works-header">
+        <div class="works-title">PLAY</div>
+      </div>
+
+      <div class="work-filters" id="play-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="graphic">Graphic</button>
+        <button class="filter-btn" data-filter="generative">Generative</button>
+        <button class="filter-btn" data-filter="interactive">Interactive</button>
+      </div>
+
+      <p class="coming-soon" id="coming-soon-play" style="display:none;">Coming Soon...</p>
+
+      <div class="work-grid">
+
+        <a class="work-item" href="works/design-for-design.html" data-category="graphic">
+          <div class="work-thumb"><img src="media/dfd/thumbnail.webp" alt="design for design" style="transform: scale(1.08);"></div>
+          <div class="work-item-info">
+            <p class="work-item-title">design for design</p>
+            <p class="work-item-meta">graphic</p>
+          </div>
+        </a>
+
+        <a class="work-item" href="works/breathing-typography.html" data-category="graphic">
+          <div class="work-thumb"><img src="media/breathing-type/thumbnail.webp" alt="breathing typography"></div>
+          <div class="work-item-info">
+            <p class="work-item-title">breathing typography</p>
+            <p class="work-item-meta">graphic, typography</p>
+          </div>
+        </a>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- BIO ページ -->
+  <div id="page-bio" class="page">
+    <section class="bio-section">
+      <span class="back-link" data-page="main" role="button" style="position: fixed; top: 2.4rem; left: 3.5rem;">← About</span>
+      <div class="bio-body">
+        <p class="bio-text">グラフィックデザイナー・VJ。2005年生まれ。<br><a href="https://www.tamabi.ac.jp/" target="_blank" rel="noopener" class="bio-link">多摩美術大学</a>グラフィックデザイン学科在学。<img src="icon/human.svg" alt="" style="width: 7em; height: 7em; margin-left: 0.6rem; vertical-align: middle;"></p>
+      </div>
+    </section>
+  </div>
+
+  <!-- CONTACT ページ -->
+  <div id="page-contact" class="page">
+    <div class="contact-title-overlay">CONTACT</div>
+    <iframe data-src="/study-007/index.html" class="contact-iframe" allowfullscreen></iframe>
+    <div id="contact-fallback" style="display:none; position:absolute; inset:0; background:#000; display:none; flex-direction:column; align-items:center; justify-content:center; gap:2rem;">
+      <a href="mailto:info@tsubasa-d.jp" style="font-family:'RoBodoni',serif; font-size:1.1rem; color:#ece7ff; letter-spacing:0.08em; text-decoration:none; background:#ece7ff; color:#000; padding:0.1em 0.3em;">info@tsubasa-d.jp</a>
+      <a href="https://www.instagram.com/tsubasa_fukuda_/?hl=ja" target="_blank" rel="noopener" style="font-family:'RoBodoni',serif; font-size:1.1rem; letter-spacing:0.08em; text-decoration:none; background:#ece7ff; color:#000; padding:0.1em 0.3em;">Instagram</a>
+      <a href="https://x.com/tsubasa_fukuda_" target="_blank" rel="noopener" style="font-family:'RoBodoni',serif; font-size:1.1rem; letter-spacing:0.08em; text-decoration:none; background:#ece7ff; color:#000; padding:0.1em 0.3em;">X</a>
+    </div>
+  </div>
+
+  <div id="cursor"></div>
+  <script src="main.js"></script>
+</body>
+</html>

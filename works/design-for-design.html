@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../icon/icon.jpg" type="image/jpeg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>design for design — TSUBASA fukuda</title>
+  <link rel="preload" href="../type/RoBodoni-Book.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="../type/RoBodoni-BookSC.otf" as="font" type="font/otf" crossorigin>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="work-detail.css">
+  <style>
+    .dfd-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem 3rem;
+      padding: 0 3.5rem;
+      margin-bottom: 5rem;
+    }
+    .dfd-grid img {
+      width: 90%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    @media (max-width: 860px) {
+      .dfd-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 2rem; }
+    }
+    @media (max-width: 560px) {
+      .dfd-grid { grid-template-columns: 1fr; padding: 0 1.5rem; gap: 1.5rem; }
+      .dfd-grid img { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="detail-header">
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <nav class="menu-nav" id="menu-nav">
+      <ul class="nav-links">
+        <li><a href="../index.html">About</a></li>
+        <li><a href="../index.html#work">Work</a></li>
+        <li><a href="../index.html#play">Play</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="back-link" href="../index.html#play">← Play</a>
+  </header>
+
+  <main class="detail-main">
+
+    <div class="detail-intro">
+      <h1 class="detail-title">design for design</h1>
+    </div>
+
+    <div style="padding: 0 3.5rem; margin-bottom: 3.5rem; display: flex; justify-content: center;">
+      <img src="../media/dfd/dfd_001.webp" alt="design for design" style="max-width: 454px; width: 100%; height: auto; display: block;">
+    </div>
+
+    <div class="detail-intro" style="padding-top: 0;">
+      <div class="detail-sidebar">
+        <p class="detail-year">2025</p>
+        <div class="detail-tags">
+          <span class="detail-tag-pill">Graphic</span>
+          <span class="detail-tag-pill">Collage</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="detail-description" style="white-space: nowrap;">2025年に制作したグラフィックアート作品。素材はカメラやハンドスキャナーを用いて収集した。</p>
+
+    <div class="dfd-grid">
+      <img src="../media/dfd/dfd_007.webp" alt="dfd 007">
+      <img src="../media/dfd/dfd_017.webp" alt="dfd 017">
+      <img src="../media/dfd/dfd_009.webp" alt="dfd 009">
+      <img src="../media/dfd/dfd_025.webp" alt="dfd 025">
+      <img src="../media/dfd/dfd_023.webp" alt="dfd 023">
+      <img src="../media/dfd/dfd_005.webp" alt="dfd 005">
+      <img src="../media/dfd/dfd_003.webp" alt="dfd 003">
+      <img src="../media/dfd/dfd_001.webp" alt="dfd 001">
+      <img src="../media/dfd/dfd_002.webp" alt="dfd 002">
+    </div>
+
+    <div class="detail-credits">
+      <div class="detail-credit-row">
+        <span class="detail-credit-label">Tool</span>
+        <span class="detail-credit-value">Photoshop, Illustrator, Blender, camera, handscanner</span>
+      </div>
+    </div>
+
+  </main>
+
+  <video id="icon-video" src="../icon/03.webm" autoplay muted loop playsinline></video>
+  <script src="../cursor.js"></script>
+  <script src="detail-nav.js"></script>
+</body>
+</html>
