@@ -93,19 +93,21 @@ if (mosaicCanvas && slides.length > 0) {
   setInterval(() => { current = (current + 1) % slides.length; showSlide(current); }, 1800);
   window.addEventListener('resize', () => { resizeCanvas(); drawMosaic(slides[current], currentScatter); });
 
-  window.addEventListener('scroll', () => {
-    const now = Date.now();
-    if (now - lastScrollTime < scrollThrottle) return;
-    lastScrollTime = now;
-    currentScatter = Math.min(window.scrollY / window.innerHeight, 1) * 90;
-    if (!rafPending) {
-      rafPending = true;
-      requestAnimationFrame(() => {
-        drawMosaic(slides[current], currentScatter);
-        rafPending = false;
-      });
-    }
-  }, { passive: true });
+  if (!isMobileDevice) {
+    window.addEventListener('scroll', () => {
+      const now = Date.now();
+      if (now - lastScrollTime < scrollThrottle) return;
+      lastScrollTime = now;
+      currentScatter = Math.min(window.scrollY / window.innerHeight, 1) * 90;
+      if (!rafPending) {
+        rafPending = true;
+        requestAnimationFrame(() => {
+          drawMosaic(slides[current], currentScatter);
+          rafPending = false;
+        });
+      }
+    }, { passive: true });
+  }
 
 }
 
