@@ -619,6 +619,10 @@ header {
    モバイル
    ============================================================ */
 @media (max-width: 560px) {
+  .featured {
+    display: none;
+  }
+
   header {
     padding: 1.8rem 1.5rem;
   }
