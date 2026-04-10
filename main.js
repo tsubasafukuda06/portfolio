@@ -260,7 +260,7 @@ const hasWebGPU = !!navigator.gpu;
 function switchPage(target, pushState = true) {
   if (target === 'contact') {
     if (hasWebGPU) {
-      if (contactIframe && (!contactIframe.src || contactIframe.src === 'about:blank' || contactIframe.src === window.location.href)) {
+      if (contactIframe && !contactIframe.src.includes('study-007')) {
         contactIframe.src = contactIframe.dataset.src;
       }
     } else {
