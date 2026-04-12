@@ -231,11 +231,11 @@ if (cursor) {
   });
   document.addEventListener('mouseover', e => {
     const t = e.target.closest('.work-item, .featured-item, a, button, [role="button"]');
-    if (t && !t.classList.contains('bio-link')) cursor.classList.add('expanded');
+    if (t && !t.classList.contains('bio-link') && !t.classList.contains('filter-btn')) cursor.classList.add('expanded');
   });
   document.addEventListener('mouseout', e => {
     const t = e.target.closest('.work-item, .featured-item, a, button, [role="button"]');
-    if (t && !t.classList.contains('bio-link')) cursor.classList.remove('expanded');
+    if (t && !t.classList.contains('bio-link') && !t.classList.contains('filter-btn')) cursor.classList.remove('expanded');
   });
 }
 

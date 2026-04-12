@@ -3,6 +3,7 @@
   el.id = 'cursor';
   document.body.appendChild(el);
 
+
   // トレイル生成
   function spawnTrail(x, y) {
     const t = document.createElement('div');
@@ -42,10 +43,18 @@
   document.addEventListener('mouseleave', () => { el.style.opacity = '0'; });
   document.addEventListener('mouseenter', () => { el.style.opacity = '1'; });
   document.addEventListener('mouseover', e => {
-    if (e.target.closest('a, button, [role="button"]')) el.classList.add('expanded');
+    const isInteractive = e.target.closest('a, button, [role="button"]');
+    const isFilterBtn   = e.target.closest('.filter-btn');
+    const isWorkItem    = e.target.closest('.featured-item, .work-item');
+    if (isInteractive && !isFilterBtn) el.classList.add('expanded');
+    if (isWorkItem) el.classList.add('show-detail');
   });
   document.addEventListener('mouseout', e => {
-    if (e.target.closest('a, button, [role="button"]')) el.classList.remove('expanded');
+    const isInteractive = e.target.closest('a, button, [role="button"]');
+    const isFilterBtn   = e.target.closest('.filter-btn');
+    const isWorkItem    = e.target.closest('.featured-item, .work-item');
+    if (isInteractive && !isFilterBtn) el.classList.remove('expanded');
+    if (isWorkItem) el.classList.remove('show-detail');
   });
 })();
 
