@@ -35,65 +35,67 @@
 <body>
 
   <header class="detail-header">
-    <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
     <nav class="menu-nav" id="menu-nav">
       <ul class="nav-links">
         <li><a href="../index.html">About</a></li>
-        <li><a href="../index.html#work">client WORK</a></li>
-        <li><a href="../index.html#play">original WORK</a></li>
+        <li><a href="../index.html#CLIENT-WORK">client WORK</a></li>
+        <li><a href="../index.html#ORIGINAL-WORK" class="active">original WORK</a></li>
         <li><a href="../index.html#contact">Contact</a></li>
       </ul>
     </nav>
-    <a class="back-link" href="../index.html#play">← ORIGINAL WORK</a>
   </header>
 
   <main class="detail-main">
 
-    <div class="detail-intro">
+    <section class="detail-hero">
       <h1 class="detail-title">design for design</h1>
-    </div>
-
-    <div style="padding: 0 3.5rem; margin-bottom: 3.5rem; display: flex; justify-content: center;">
-      <img src="../media/dfd/dfd_001.webp" alt="design for design" style="max-width: 454px; width: 100%; height: auto; display: block;">
-    </div>
-
-    <div class="detail-intro" style="padding-top: 0;">
-      <div class="detail-sidebar">
+      <div class="detail-hero-meta">
+        <p class="detail-hero-category">Graphic</p>
         <p class="detail-year">2025</p>
-        <div class="detail-tags">
-          <span class="detail-tag-pill">Graphic</span>
-          <span class="detail-tag-pill">Collage</span>
-        </div>
       </div>
-    </div>
+    </section>
 
-    <p class="detail-description">2025年に制作したグラフィックアート作品。素材はカメラやハンドスキャナーを用いて収集した。</p>
+    <div style="padding: 0 3.5rem; margin-bottom: 9rem; display: flex; justify-content: center;">
+      <img src="../media/design-for-design/dfd_001.webp" alt="design for design" style="max-width: 454px; width: 100%; height: auto; display: block;">
+    </div>
 
     <div class="dfd-grid">
-      <img src="../media/dfd/dfd_007.webp" alt="dfd 007">
-      <img src="../media/dfd/dfd_017.webp" alt="dfd 017">
-      <img src="../media/dfd/dfd_009.webp" alt="dfd 009">
-      <img src="../media/dfd/dfd_025.webp" alt="dfd 025">
-      <img src="../media/dfd/dfd_023.webp" alt="dfd 023">
-      <img src="../media/dfd/dfd_005.webp" alt="dfd 005">
-      <img src="../media/dfd/dfd_003.webp" alt="dfd 003">
-      <img src="../media/dfd/dfd_001.webp" alt="dfd 001">
-      <img src="../media/dfd/dfd_002.webp" alt="dfd 002">
+      <img src="../media/design-for-design/dfd_007.webp" alt="dfd 007">
+      <img src="../media/design-for-design/dfd_017.webp" alt="dfd 017">
+      <img src="../media/design-for-design/dfd_009.webp" alt="dfd 009">
+      <img src="../media/design-for-design/dfd_026.webp" alt="dfd 026">
+      <img src="../media/design-for-design/dfd_023.webp" alt="dfd 023">
+      <img src="../media/design-for-design/dfd_005.webp" alt="dfd 005">
+      <img src="../media/design-for-design/dfd_003.webp" alt="dfd 003">
+      <img src="../media/design-for-design/dfd_001.webp" alt="dfd 001">
+      <img src="../media/design-for-design/dfd_002.webp" alt="dfd 002">
     </div>
 
-    <div class="detail-credits">
-      <div class="detail-credit-row">
-        <span class="detail-credit-label">Tool</span>
-        <span class="detail-credit-value">Photoshop, Illustrator, Blender, camera, handscanner</span>
+    <div class="detail-info-grid">
+      <div class="detail-info-col">
+        <p class="detail-info-label">ABOUT</p>
+        <p class="detail-info-body">2025年に制作したグラフィックアート作品</p>
+      </div>
+      <div class="detail-info-col">
+        <p class="detail-info-label">CONCEPT</p>
+        <p class="detail-info-body">煌めく波模様、電柱の擦過痕、植物の繊維。<br>日常で発見した痕跡をカメラやハンドスキャナーを用いて採集 加工し、ひとつのヴィジュアルに再構築した。</p>
+      </div>
+      <div class="detail-info-col">
+        <p class="detail-info-label">DATA</p>
+        <div class="detail-info-body">
+          <p class="detail-info-date-value">2025</p>
+          <div class="detail-info-date-tags">
+            <span class="detail-info-date-pill">Graphic</span>
+            <span class="detail-info-date-pill">Collage</span>
+          </div>
+          <p class="detail-info-credit-row">Software : Adobe Photoshop, Adobe Illustrator</p>
+          <p class="detail-info-credit-row">Hardware : MacBook Pro, Camera, Hand scanner</p>
+        </div>
       </div>
     </div>
 
   </main>
 
-  <video id="icon-video" src="../icon/03.webm" autoplay muted loop playsinline></video>
   <script src="../cursor.js"></script>
   <script src="detail-nav.js"></script>
 </body>

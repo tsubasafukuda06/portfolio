@@ -111,133 +111,7 @@ if (mosaicCanvas && slides.length > 0) {
 
 }
 
-// アイコン動画
-const iconVideo = document.getElementById('icon-video');
 
-function showIconVideo(show) {
-  if (!iconVideo) return;
-  iconVideo.classList.toggle('visible', show);
-}
-
-if (iconVideo) {
-  iconVideo.addEventListener('click', () => {
-    // 03のループを停止して02を再生
-    iconVideo.loop = false;
-    iconVideo.src = 'icon/02.webm';
-    iconVideo.play();
-  });
-
-  iconVideo.addEventListener('ended', () => {
-    // 02再生終了 → 03ループに戻す
-    iconVideo.loop = true;
-    iconVideo.src = 'icon/03.webm';
-    iconVideo.play();
-  });
-
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) iconVideo.pause();
-    else iconVideo.play();
-  });
-}
-
-// イントロ映像
-const intro = document.getElementById('intro');
-const introVideo = document.getElementById('intro-video');
-const introPoster = document.getElementById('intro-poster');
-
-function hideIntro() {
-  sessionStorage.setItem('introPlayed', '1');
-  intro.classList.add('hidden');
-  setTimeout(() => { intro.style.display = 'none'; }, 600);
-}
-
-if (intro && introVideo) {
-  if (sessionStorage.getItem('introPlayed')) {
-    intro.style.display = 'none';
-  } else {
-    const isMobileIntro = window.matchMedia('(hover: none)').matches;
-    if (isMobileIntro) {
-      // モバイル：静止画を1秒表示
-      introVideo.style.display = 'none';
-      if (introPoster) introPoster.style.display = '';
-      setTimeout(hideIntro, 2000);
-    } else {
-      introVideo.addEventListener('ended', hideIntro);
-      introVideo.addEventListener('error', () => { intro.style.display = 'none'; });
-      introVideo.play().catch(() => {});
-    }
-  }
-}
-
-// カスタムカーソル
-const cursor = document.getElementById('cursor');
-
-
-function spawnTrail(x, y) {
-  const t = document.createElement('div');
-  t.style.cssText = `position:fixed;width:10px;height:10px;border-radius:50%;background:#fff;pointer-events:none;z-index:999998;transform:translate(-50%,-50%);left:${x}px;top:${y}px;opacity:0.5;`;
-  document.body.appendChild(t);
-  requestAnimationFrame(() => {
-    t.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    t.style.opacity = '0';
-    t.style.transform = 'translate(-50%,-50%) scale(0.3)';
-  });
-  setTimeout(() => t.remove(), 650);
-}
-
-let lastTrail = 0;
-let prevX = 0, prevY = 0;
-
-if (cursor) {
-  let idleTimer;
-
-  function resetIdle() {
-    cursor.style.opacity = '1';
-    clearTimeout(idleTimer);
-    idleTimer = setTimeout(() => {
-      cursor.style.opacity = '0';
-    }, 2000);
-  }
-
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top  = e.clientY + 'px';
-    resetIdle();
-    const now = Date.now();
-    if (now - lastTrail > 30 && !cursor.classList.contains('expanded')) {
-      spawnTrail(prevX, prevY);
-      lastTrail = now;
-    }
-    prevX = e.clientX;
-    prevY = e.clientY;
-  });
-
-  document.addEventListener('mouseleave', () => {
-    cursor.style.opacity = '0';
-  });
-  document.addEventListener('mouseenter', () => {
-    cursor.style.opacity = '1';
-  });
-
-  // iframe 上ではカーソルと残像を非表示
-  document.querySelectorAll('iframe').forEach(iframe => {
-    iframe.addEventListener('mouseenter', () => {
-      cursor.style.opacity = '0';
-      cursor.classList.remove('expanded');
-    });
-    iframe.addEventListener('mouseleave', () => {
-      cursor.style.opacity = '1';
-    });
-  });
-  document.addEventListener('mouseover', e => {
-    const t = e.target.closest('.work-item, .featured-item, a, button, [role="button"]');
-    if (t && !t.classList.contains('bio-link') && !t.classList.contains('filter-btn')) cursor.classList.add('expanded');
-  });
-  document.addEventListener('mouseout', e => {
-    const t = e.target.closest('.work-item, .featured-item, a, button, [role="button"]');
-    if (t && !t.classList.contains('bio-link') && !t.classList.contains('filter-btn')) cursor.classList.remove('expanded');
-  });
-}
 
 
 // メニュートグル
@@ -261,6 +135,9 @@ function switchPage(target, pushState = true) {
   if (target === 'contact') {
     if (hasWebGPU) {
       if (contactIframe && !contactIframe.src.includes('study-007')) {
+        contactIframe.addEventListener('load', () => {
+          if (window._attachIframeCursor) window._attachIframeCursor(contactIframe);
+        }, { once: true });
         contactIframe.src = contactIframe.dataset.src;
       }
     } else {
@@ -278,9 +155,6 @@ function switchPage(target, pushState = true) {
 
   navLinks.forEach(l => {
     l.classList.toggle('active', l.dataset.page === target);
-    if (l.dataset.page === 'main') {
-      l.parentElement.style.display = target === 'main' ? 'none' : '';
-    }
   });
 
   // メニューを閉じる
@@ -311,16 +185,12 @@ window.addEventListener('popstate', e => {
 
 // URLハッシュでWORK/PLAYページを直接開く（back-link対応）
 const hash = location.hash.replace('#', '');
-const validPages = ['work', 'play', 'contact', 'bio'];
+const validPages = ['CLIENT-WORK', 'ORIGINAL-WORK', 'contact', 'bio'];
 const initialPage = validPages.includes(hash) ? hash : 'main';
 history.replaceState({ page: initialPage }, '', location.href);
 if (initialPage !== 'main') switchPage(initialPage, false);
 
-// 初期表示：AboutページではAboutリンクを非表示
-const aboutLink = document.querySelector('.nav-links [data-page="main"]');
-if (aboutLink) aboutLink.parentElement.style.display = initialPage === 'main' ? 'none' : '';
 
-showIconVideo(true);
 
 const filterPanel = document.getElementById('work-filters');
 
@@ -353,20 +223,4 @@ document.addEventListener('click', e => {
 });
 
 
-// Aboutテキストのキーワードクリック
-document.addEventListener('click', e => {
-  const link = e.target.closest('.about-link, [data-page]');
-  if (!link) return;
-
-  // data-page があれば別ページへ
-  if (link.dataset.page) {
-    switchPage(link.dataset.page);
-    return;
-  }
-
-  // data-filter があれば Work ページ＋フィルター
-  const filter = link.dataset.filter;
-  switchPage('work');
-  applyFilter(filter);
-});
 
