@@ -573,26 +573,70 @@ header {
   #icon-video { display: none !important; }
 }
 
+/* ハンバーガーボタン（デスクトップでは非表示） */
+#menu-toggle {
+  display: none;
+}
+
 /* ============================================================
    モバイル
    ============================================================ */
 @media (max-width: 560px) {
-  .featured {
-    display: none;
+  /* ハンバーガーボタン表示 */
+  #menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    padding: 0;
+    position: fixed;
+    top: 1.8rem;
+    right: 1.5rem;
+    z-index: 300;
+  }
+  #menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 1px;
+    background: #000;
+    transition: opacity 0.2s;
   }
 
+  /* ナビをデフォルト非表示 */
   header {
-    padding: 1.8rem 1.5rem;
+    padding: 0;
+  }
+  .menu-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #fff;
+    padding: 5rem 2rem 2.5rem;
+    z-index: 250;
+    min-width: 60vw;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.06);
+  }
+  .menu-nav.open {
+    display: block;
+  }
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.8rem;
+  }
+  .nav-links a {
+    font-size: 0.8rem;
+  }
+
+  .featured {
+    display: none;
   }
 
   .about-text {
     left: 1.5rem;
     top: 14vh;
-  }
-
-  .featured {
-    padding: 20vh 1.5rem 4rem;
-    gap: 3rem;
   }
 
   .works-section {
@@ -607,9 +651,16 @@ header {
     padding: 14vh 1.5rem 8rem;
   }
 
+  /* フィルター一行 */
   .work-filters {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 0;
     padding: 1rem 0;
     margin-bottom: 2.5rem;
+  }
+  .filter-btn {
+    font-size: 0.7rem;
   }
 
   .work-grid {
