@@ -9,7 +9,8 @@ document.querySelectorAll('video[data-src]').forEach(video => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         video.src = videoSrc;
-        video.play();
+        video.load();
+        video.play().catch(() => {});
         observer.disconnect();
       }
     });

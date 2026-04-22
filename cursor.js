@@ -89,7 +89,7 @@ const videoObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     const video = entry.target;
     if (entry.isIntersecting) {
-      video.play();
+      video.play().catch(() => {});
     } else {
       video.pause();
     }
