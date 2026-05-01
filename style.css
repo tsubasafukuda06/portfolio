@@ -614,7 +614,7 @@ header {
     right: 0;
     background: #fff;
     padding: 5rem 2rem 2.5rem;
-    z-index: 250;
+    z-index: 1100;
     min-width: 60vw;
     box-shadow: -4px 0 20px rgba(0,0,0,0.06);
   }
