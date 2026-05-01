@@ -23,7 +23,12 @@
       width: 100%;
       height: 100%;
     }
-  </style>
+    @media (max-width: 560px) {
+      .ooze-video-wrap {
+        padding: 0 !important;
+      }
+    }
+</style>
 </head>
 <body>
 
@@ -62,7 +67,7 @@
           </iframe>
         </div>
       </div>
-      <div style="width:100%; padding: 0 3.5rem; margin-top: 2rem;">
+      <div class="ooze-video-wrap" style="width:100%; padding: 0 3.5rem; margin-top: 2rem;">
         <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; background: #0d0d0d;">
           <iframe
             style="position: absolute; inset: 0; width: 100%; height: 100%;"
