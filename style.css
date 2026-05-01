@@ -606,6 +606,7 @@ header {
   /* ナビをデフォルト非表示 */
   header {
     padding: 0;
+    z-index: 1200;
   }
   .menu-nav {
     display: none;
